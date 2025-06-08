@@ -6,7 +6,7 @@ const ProductCard = ({ product }) => {
 
   const [itemQuantity, setItemQuantity] = useState(0);
 
-  const [cartQuantity, setCartQuantity] = useOutletContext();
+  const [cartQuantity, setCartQuantity, cart, setCart] = useOutletContext();
 
   console.log(cartQuantity);
 
@@ -33,6 +33,7 @@ const ProductCard = ({ product }) => {
 
         {/* Rating */}
         <div className="flex items-center space-x-2">
+          <span>⭐️</span>
           <span className="text-yellow-500 font-semibold">{rating?.rate}</span>
           <span className="text-sm text-gray-500">
             ({rating?.count} reviews)
@@ -86,7 +87,19 @@ const ProductCard = ({ product }) => {
           type="button"
           onClick={() => {
             setCartQuantity((prev) => prev + itemQuantity);
+            setItemQuantity(0);
+            setCart((prev) => {
+              const newCart = [
+                ...prev,
+                {
+                  ...product,
+                  quantity: itemQuantity,
+                },
+              ];
+              return newCart;
+            });
           }}
+          disabled={itemQuantity === 0}
         >
           Add to Cart
         </button>

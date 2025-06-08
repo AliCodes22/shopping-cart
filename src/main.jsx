@@ -7,6 +7,7 @@ import HomePage from "./pages/HomePage.jsx";
 
 import "./index.css";
 import ProductPage from "./pages/ProductPage.jsx";
+import CartPage from "./pages/CartPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
       {
         path: "/shop/:id",
         element: <ProductPage />,
+      },
+      {
+        path: "/cart",
+        element: <CartPage />,
       },
       {
         index: true,
