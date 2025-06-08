@@ -1,10 +1,13 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import ProductCard from "../components/ProductCard";
+import { Link, useOutletContext } from "react-router-dom";
 
 const ShopPage = () => {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+
+  const [cartQuantity, setCartQuantity] = useOutletContext();
 
   useEffect(() => {
     const getProducts = async () => {

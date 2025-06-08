@@ -1,25 +1,82 @@
+import { useOutletContext } from "react-router-dom";
+
 const ProductCard = ({ product }) => {
-  const { category, description, id, image, price, rating, title } = product;
+  const { category, description, image, price, rating, title } = product;
+
+  const [cartQuantity, setCartQuantity] = useOutletContext();
+
+  console.log(cartQuantity);
 
   return (
-    <div className="bg-white shadow-md rounded-2xl overflow-hidden max-w-sm transition hover:scale-105 duration-300">
+    <div className="bg-white rounded-2xl shadow-md border border-gray-100 hover:border-blue-500 hover:bg-gray-50 transition-colors duration-200 flex flex-col">
+      {/* Product Image */}
       <img
         src={image}
         alt={title}
-        className="w-full h-64 object-contain p-4 bg-gray-50"
+        className="w-full h-64 object-contain p-4 rounded-t-2xl bg-gray-50"
       />
-      <div className="p-4 flex flex-col gap-2">
-        <h3 className="text-lg font-semibold line-clamp-2">{title}</h3>
-        <p className="text-sm text-gray-500 line-clamp-3">{description}</p>
-        <div className="flex justify-between items-center mt-2">
-          <span className="text-xl font-bold text-amber-600">${price}</span>
-          <span className="text-sm text-gray-600">
-            ⭐ {rating?.rate} ({rating?.count})
-          </span>
-        </div>
-        <span className="text-xs font-medium text-gray-400 uppercase mt-1">
+
+      {/* Product Details */}
+      <div className="p-4 flex flex-col flex-grow justify-between space-y-4">
+        {/* Category */}
+        <span className="text-sm font-medium text-blue-600 uppercase tracking-wide">
           {category}
         </span>
+
+        {/* Title */}
+        <h2 className="text-xl font-semibold text-gray-900 line-clamp-2">
+          {title}
+        </h2>
+
+        {/* Rating */}
+        <div className="flex items-center space-x-2">
+          <span className="text-yellow-500 font-semibold">{rating?.rate}</span>
+          <span className="text-sm text-gray-500">
+            ({rating?.count} reviews)
+          </span>
+        </div>
+
+        {/* Description */}
+        <p className="text-sm text-gray-600 line-clamp-3">{description}</p>
+
+        {/* Price */}
+        <div className="text-lg font-bold text-gray-900">${price}</div>
+
+        {/* Quantity Controls */}
+        <div className="flex items-center space-x-3">
+          <button
+            className="px-3 py-1 text-lg bg-gray-100 hover:bg-gray-200 rounded"
+            type="button"
+          >
+            −
+          </button>
+          <input
+            type="number"
+            className="w-16 text-center border border-gray-300 rounded-md px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            min="0"
+            value="1"
+            readOnly
+          />
+          <button
+            className="px-3 py-1 text-lg bg-gray-100 hover:bg-gray-200 rounded"
+            type="button"
+            onClick={() => {
+              setCartQuantity((prev) => {
+                return prev + 1;
+              });
+            }}
+          >
+            +
+          </button>
+        </div>
+
+        {/* Add to Cart Button */}
+        <button
+          className="w-full mt-2 bg-blue-600 text-white rounded-md py-2 px-4 hover:bg-blue-700 transition-colors duration-200"
+          type="button"
+        >
+          Add to Cart
+        </button>
       </div>
     </div>
   );
