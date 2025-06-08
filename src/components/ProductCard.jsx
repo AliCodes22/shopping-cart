@@ -1,7 +1,10 @@
+import { useState } from "react";
 import { useOutletContext } from "react-router-dom";
 
 const ProductCard = ({ product }) => {
   const { category, description, image, price, rating, title } = product;
+
+  const [itemQuantity, setItemQuantity] = useState(0);
 
   const [cartQuantity, setCartQuantity] = useOutletContext();
 
@@ -47,6 +50,15 @@ const ProductCard = ({ product }) => {
           <button
             className="px-3 py-1 text-lg bg-gray-100 hover:bg-gray-200 rounded"
             type="button"
+            onClick={() => {
+              setItemQuantity((prev) => {
+                if (prev === 0) {
+                  return (prev = 0);
+                }
+
+                return prev - 1;
+              });
+            }}
           >
             −
           </button>
@@ -54,16 +66,14 @@ const ProductCard = ({ product }) => {
             type="number"
             className="w-16 text-center border border-gray-300 rounded-md px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500"
             min="0"
-            value="1"
-            readOnly
+            value={itemQuantity}
+            onChange={(e) => setItemQuantity(e.target.value)}
           />
           <button
             className="px-3 py-1 text-lg bg-gray-100 hover:bg-gray-200 rounded"
             type="button"
             onClick={() => {
-              setCartQuantity((prev) => {
-                return prev + 1;
-              });
+              setItemQuantity((prev) => prev + 1);
             }}
           >
             +
@@ -74,6 +84,9 @@ const ProductCard = ({ product }) => {
         <button
           className="w-full mt-2 bg-blue-600 text-white rounded-md py-2 px-4 hover:bg-blue-700 transition-colors duration-200"
           type="button"
+          onClick={() => {
+            setCartQuantity((prev) => prev + itemQuantity);
+          }}
         >
           Add to Cart
         </button>
