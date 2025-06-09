@@ -1,6 +1,11 @@
 # 🛍️ Shopping Cart
 
 A sleek, modern React-based e-commerce frontend that allows users to browse products, add them to a shopping cart, and simulate a seamless checkout experience. Built to showcase frontend skills with real-world UX/UI practices.
+<img width="1461" alt="Screenshot 2025-06-09 at 1 30 48 AM" src="https://github.com/user-attachments/assets/8c03e0ec-ac3e-4ab1-bf32-b5a3252e567b" />
+<img width="1453" alt="Screenshot 2025-06-09 at 1 31 33 AM" src="https://github.com/user-attachments/assets/ddd99ba4-2041-43b9-94aa-d18782d38533" />
+
+
+
 
 --- 
 
