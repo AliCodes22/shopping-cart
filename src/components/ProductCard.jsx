@@ -2,7 +2,8 @@ import { useState } from "react";
 import { useOutletContext } from "react-router-dom";
 
 const ProductCard = ({ product }) => {
-  const { category, description, image, price, rating, title } = product;
+  const { category, description, image, price, rating, title, id, quantity } =
+    product;
 
   const [itemQuantity, setItemQuantity] = useState(0);
 
@@ -91,6 +92,19 @@ const ProductCard = ({ product }) => {
             setCartQuantity((prev) => prev + itemQuantity);
             setItemQuantity(0);
             setCart((prev) => {
+              const productExists = cart.find((item) => item.id === product.id);
+
+              if (productExists) {
+                return prev.map((item) =>
+                  item.id === product.id
+                    ? {
+                        ...item,
+                        quantity: item.quantity + itemQuantity,
+                      }
+                    : item
+                );
+              }
+
               const newCart = [
                 ...prev,
                 {
