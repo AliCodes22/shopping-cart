@@ -1,12 +1,49 @@
-# React + Vite
+# 🛍️ Shopping Cart
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A sleek, modern React-based e-commerce frontend that allows users to browse products, add them to a shopping cart, and simulate a seamless checkout experience. Built to showcase frontend skills with real-world UX/UI practices.
 
-Currently, two official plugins are available:
+--- 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🧩 Features
 
-## Expanding the ESLint configuration
+- 🏠 **Homepage** — Clean landing page with a CTA to start shopping  
+- 🛒 **Shop Page** — Displays products from the [FakeStore API](https://fakestoreapi.com/)  
+- 🧾 **Cart Page** — Shows items added with real-time quantity adjustments  
+- ✅ **Order Confirmation** — Simulates an order placement with a unique Order ID  
+- 🔄 **State Sharing** — Cart data shared globally using React Router Outlet context  
+- 🌐 **Error Handling** — Custom error page and loader for smooth UX  
+- 🎨 **Modern UI** — Built with **TailwindCSS** and subtle animations  
+- 🔧 **Responsive** — Mobile-first design that scales beautifully on all devices  
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🛠️ Tech Stack
+
+- **React 18**
+- **React Router DOM**
+- **TailwindCSS**
+- **Lucide Icons**
+- **Axios**
+- **UUID**
+
+---
+
+## 🧠 What I Learned
+
+- Component-driven architecture with reusable card layouts
+- Managing shared state across nested routes
+- Fetching and rendering remote API data with loading & error states
+- Building modern UIs with TailwindCSS and responsive best practices
+- Creating a user-centric shopping experience with accessibility in mind
+
+---
+
+# 1. Clone the repo
+git clone https://github.com/AliCodes22/shopping-cart.git
+cd shopping-cart
+
+# 2. Install dependencies
+npm install
+
+# 3. Start development server
+npm run dev
