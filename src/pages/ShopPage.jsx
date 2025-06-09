@@ -2,32 +2,42 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import ProductCard from "../components/ProductCard";
 import { Link, useOutletContext } from "react-router-dom";
+import Loader from "../components/Loader";
+import ErrorPage from "./ErrorPage";
 
 const ShopPage = () => {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   const [cartQuantity, setCartQuantity] = useOutletContext();
 
   useEffect(() => {
     const getProducts = async () => {
-      const res = await axios.get("https://fakestoreapi.com/products");
+      try {
+        setIsLoading(true);
+        const res = await axios.get("https://fakestoreapi.com/products");
 
-      if (!res) {
-        return <div>Error fetching data</div>;
+        const { data: products } = res;
+
+        setProducts(products);
+        setError(false);
+      } catch (err) {
+        setError(true);
+      } finally {
+        setIsLoading(false);
       }
-
-      const { data: products } = res;
-
-      setProducts(products);
-      setIsLoading(false);
     };
 
     getProducts();
   }, []);
 
+  if (error) {
+    return <ErrorPage />;
+  }
+
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Loader />;
   }
 
   console.log(products);

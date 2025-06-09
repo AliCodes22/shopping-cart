@@ -2,7 +2,7 @@ const CartItem = ({ product }) => {
   const { image, title, category, rating, description, quantity } = product;
 
   return (
-    <div className="flex flex-col md:flex-row gap-4 items-start p-4 bg-white rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition-all">
+    <div className="flex flex-col md:flex-row gap-6 items-start p-6 bg-white rounded-xl shadow-md border border-gray-200 hover:shadow-lg transition-all">
       {/* Image */}
       <div className="w-full md:w-1/4 bg-gray-100 rounded-lg p-4 flex items-center justify-center">
         <img src={image} alt={title} className="h-40 object-contain" />
@@ -23,8 +23,8 @@ const CartItem = ({ product }) => {
 
         <p className="text-sm text-gray-600 line-clamp-2">{description}</p>
 
-        <div className="text-sm text-gray-700">
-          <span className="font-medium">Quantity:</span> {quantity}
+        <div className="text-sm text-gray-700 flex items-center space-x-2">
+          Quantity: {quantity}
         </div>
       </div>
     </div>

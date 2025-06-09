@@ -8,15 +8,13 @@ const ProductCard = ({ product }) => {
 
   const [cartQuantity, setCartQuantity, cart, setCart] = useOutletContext();
 
-  console.log(cartQuantity);
-
   return (
     <div className="bg-white rounded-2xl shadow-md border border-gray-100 hover:border-blue-500 hover:bg-gray-50 transition-colors duration-200 flex flex-col">
       {/* Product Image */}
       <img
         src={image}
         alt={title}
-        className="w-full h-64 object-contain p-4 rounded-t-2xl bg-gray-50"
+        className="w-full h-64 object-contain p-4 rounded-t-2xl bg-gray-50 shadow-sm"
       />
 
       {/* Product Details */}
@@ -49,7 +47,7 @@ const ProductCard = ({ product }) => {
         {/* Quantity Controls */}
         <div className="flex items-center space-x-3">
           <button
-            className="px-3 py-1 text-lg bg-gray-100 hover:bg-gray-200 rounded"
+            className="px-4 py-2 text-lg bg-gray-100 hover:bg-gray-200 rounded transition focus:outline-none focus:ring-2 focus:ring-blue-500"
             type="button"
             onClick={() => {
               setItemQuantity((prev) => {
@@ -71,7 +69,7 @@ const ProductCard = ({ product }) => {
             onChange={(e) => setItemQuantity(e.target.value)}
           />
           <button
-            className="px-3 py-1 text-lg bg-gray-100 hover:bg-gray-200 rounded"
+            className="px-4 py-2 text-lg bg-gray-100 hover:bg-gray-200 rounded transition focus:outline-none focus:ring-2 focus:ring-blue-500"
             type="button"
             onClick={() => {
               setItemQuantity((prev) => prev + 1);
@@ -83,7 +81,11 @@ const ProductCard = ({ product }) => {
 
         {/* Add to Cart Button */}
         <button
-          className="w-full mt-2 bg-blue-600 text-white rounded-md py-2 px-4 hover:bg-blue-700 transition-colors duration-200"
+          className={`w-full mt-2 rounded-md py-2 px-4 transition-colors duration-200 ${
+            itemQuantity === 0
+              ? "bg-blue-300 cursor-not-allowed"
+              : "bg-blue-600 hover:bg-blue-700 text-white"
+          }`}
           type="button"
           onClick={() => {
             setCartQuantity((prev) => prev + itemQuantity);

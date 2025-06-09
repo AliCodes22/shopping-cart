@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 
 const OrderConfirmation = () => {
   const uuid = uuidv4();
-  const [cartQuantity, setCartQuantity] = useOutletContext();
+  const [, setCartQuantity] = useOutletContext();
 
   useEffect(() => {
     setCartQuantity(0);
