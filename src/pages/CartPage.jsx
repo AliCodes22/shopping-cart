@@ -53,7 +53,6 @@ const CartPage = () => {
             onClick={() => {
               navigate("/checkout");
               setCart([]);
-              setCartQuantity(0);
             }}
           >
             Proceed to Checkout
