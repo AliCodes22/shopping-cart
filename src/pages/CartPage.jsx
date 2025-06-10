@@ -52,6 +52,7 @@ const CartPage = () => {
             className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-full transition"
             onClick={() => {
               navigate("/checkout");
+              setCart([]);
             }}
           >
             Proceed to Checkout
